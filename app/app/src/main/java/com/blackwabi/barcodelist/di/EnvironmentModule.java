@@ -13,10 +13,10 @@ import dagger.Provides;
  */
 
 @Module
-public class PresenterModule {
+public class EnvironmentModule {
     private final BarcodeApp mApp;
 
-    public PresenterModule(BarcodeApp app) {
+    public EnvironmentModule(BarcodeApp app) {
         mApp = app;
     }
 

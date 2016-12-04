@@ -1,10 +1,6 @@
 package com.blackwabi.barcodelist;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,15 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.blackwabi.barcodelist.fragments.ArticleListFragment;
-import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
+import com.blackwabi.barcodelist.di.ActivityComponent;
+import com.blackwabi.barcodelist.di.ActivityComponentContainer;
+import com.blackwabi.barcodelist.di.ActivityModule;
 
 public class BarcodeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ActivityComponentContainer {
+
+    private ActivityComponent mActivityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // We need to create an instance of the activity component and its object graph
+        createAndInjectActivityComponent();
+
         setContentView(R.layout.activity_barcode);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,7 +38,14 @@ public class BarcodeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.article_lists);
-        goToLists();
+        mActivityComponent.navigator().goToLists();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // This makes the object graph eligible for garbage collection
+        mActivityComponent = null;
+        super.onDestroy();
     }
 
     @Override
@@ -57,9 +67,9 @@ public class BarcodeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.articles) {
-            goToArticles();
+            mActivityComponent.navigator().goToArticles();
         } else if (id == R.id.article_lists) {
-            goToLists();
+            mActivityComponent.navigator().goToLists();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -67,18 +77,15 @@ public class BarcodeActivity extends AppCompatActivity
         return true;
     }
 
-    public void goToArticles() {
-        replaceFragment(new ArticleListFragment());
+
+
+
+
+    private void createAndInjectActivityComponent() {
+        mActivityComponent = BarcodeApp.getComponent().activityComponent(new ActivityModule(this));
     }
 
-    public void goToLists() {
-        replaceFragment(new ArticleListListFragment());
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_barcode, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+    public ActivityComponent getActivityComponent() {
+        return mActivityComponent;
     }
 }

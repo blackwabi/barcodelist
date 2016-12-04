@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blackwabi.barcodelist.R;
-import com.blackwabi.barcodelist.di.BarcodeComponent;
+import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.presenters.ArticleListPresenter;
 
 /**
@@ -32,7 +32,7 @@ public class ArticleListListFragment extends BaseFragment<ArticleListPresenter> 
     }
 
     @Override
-    protected void injectIntoComponentAndPresenter(BarcodeComponent component) {
+    protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
         getPresenter().setFragment(this);
     }
