@@ -13,7 +13,7 @@ public class ArticlePresenter extends BasePresenter<ArticleListFragment> {
     private final Navigator mNavigator;
 
     public void onAddClicked() {
-        //TODO: Implement this
+        mNavigator.goToNewArticle();
     }
 
     @Inject

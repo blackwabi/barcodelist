@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.blackwabi.barcodelist.fragments.ArticleListFragment;
 import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
+import com.blackwabi.barcodelist.fragments.NewArticleFragment;
 
 /**
  * Created by martinbegleiter on 04/12/16.
@@ -24,6 +25,10 @@ public class Navigator {
 
     public void goToLists() {
         replaceFragment(new ArticleListListFragment());
+    }
+
+    public void goToNewArticle() {
+        replaceFragment(new NewArticleFragment());
     }
 
     private void replaceFragment(Fragment fragment) {
