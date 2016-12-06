@@ -16,4 +16,8 @@ public class NewArticlePresenter extends BasePresenter<NewArticleFragment>{
     public NewArticlePresenter(Navigator navigator) {
         mNavigator = navigator;
     }
+
+    public void onSaveClicked(String articleName, String articleCode) {
+        //TODO: Implement
+    }
 }

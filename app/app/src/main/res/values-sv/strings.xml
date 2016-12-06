@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="save">Save</string>
-    <string name="article_name">Article name</string>
-    <string name="article_code">Article code</string>
+    <string name="save">Spara</string>
+    <string name="article_name">Artikelnamn</string>
+    <string name="article_code">Artikelkod</string>
 </resources>
