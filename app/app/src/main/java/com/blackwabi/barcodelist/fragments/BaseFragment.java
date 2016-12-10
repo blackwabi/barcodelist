@@ -7,6 +7,8 @@ import com.blackwabi.barcodelist.di.ActivityComponentContainer;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.presenters.BasePresenter;
 
+import java.sql.Connection;
+
 import javax.inject.Inject;
 
 /**
@@ -17,6 +19,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment{
 
     @Inject
     protected P mPresenter;
+
+    protected Context mContext;
     private FragmentComponent mFragmentComponent;
 
     protected P getPresenter() {
@@ -27,6 +31,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment{
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
+            mContext = context;
             mFragmentComponent = ((ActivityComponentContainer) context).getActivityComponent()
                     .fragmentComponent();
             injectIntoComponentAndPresenter(mFragmentComponent);
