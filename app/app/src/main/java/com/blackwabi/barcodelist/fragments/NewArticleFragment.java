@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.presenters.NewArticlePresenter;
 import com.google.zxing.Result;
+
+import org.w3c.dom.Text;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -21,12 +24,13 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by martinbegleiter on 04/12/16.
  */
 
-public class NewArticleFragment extends BaseFragment<NewArticlePresenter> implements
-        ZXingScannerView.ResultHandler {
+public class NewArticleFragment extends BaseFragment<NewArticlePresenter> {
 
     private TextView mArticleName;
-    private String mScannedCode;
     private ZXingScannerView mScannerView;
+    private FrameLayout mScannerLayout;
+    private TextView mArticleCode;
+    private ImageView mScannerIcon;
 
     @Nullable
     @Override
@@ -34,14 +38,15 @@ public class NewArticleFragment extends BaseFragment<NewArticlePresenter> implem
         View view = inflater.inflate(R.layout.fragment_new_article, container, false);
         mArticleName = (TextView) view.findViewById(R.id.articleName);
 
-        FrameLayout scannerLayout = (FrameLayout) view.findViewById(R.id.articleCode);
-        mScannerView = new ZXingScannerView(mContext);
-        mScannerView.setResultHandler(this);
-        scannerLayout.addView(mScannerView);
+        mArticleCode = (TextView) view.findViewById(R.id.articleCode);
+        mScannerIcon = (ImageView) view.findViewById(R.id.scannerIcon);
+        mScannerIcon.setOnClickListener(view1 -> mPresenter.onScannerClicked());
+
+        mScannerLayout = (FrameLayout) view.findViewById(R.id.scannerContainer);
 
         Button saveButton = (Button) view.findViewById(R.id.save);
         saveButton.setOnClickListener(view1 -> mPresenter.onSaveClicked(mArticleName.getText()
-                .toString(), mScannedCode));
+                .toString()));
         return view;
     }
 
@@ -52,19 +57,39 @@ public class NewArticleFragment extends BaseFragment<NewArticlePresenter> implem
     }
 
     @Override
-    public void handleResult(Result result) {
-        mScannedCode = result.getText();
-    }
-
-    @Override
     public void onPause() {
-        mScannerView.stopCamera();
+        if (mScannerView != null) {
+            mScannerView.stopCamera();
+        }
         super.onPause();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mScannerView.startCamera();
+        if (mScannerView != null) {
+            mScannerView.startCamera();
+        }
+    }
+
+    public void showScanner(boolean show) {
+        if (show) {
+            mScannerView = new ZXingScannerView(mContext);
+            mScannerView.setResultHandler(mPresenter);
+            mScannerLayout.addView(mScannerView);
+            mScannerIcon.setVisibility(View.GONE);
+            mScannerLayout.setVisibility(View.VISIBLE);
+            mScannerView.startCamera();
+        } else {
+            mScannerIcon.setVisibility(View.VISIBLE);
+            mScannerLayout.setVisibility(View.GONE);
+            mScannerLayout.removeAllViews();
+            mScannerView.stopCamera();
+            mScannerView = null;
+        }
+    }
+
+    public void setScannedCode(String scannedCode) {
+        mArticleCode.setText(scannedCode);
     }
 }
