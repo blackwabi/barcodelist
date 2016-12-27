@@ -38,6 +38,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:2.4"
 
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.4.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'me.dm7.barcodescanner:zxing:1.9'
 }
