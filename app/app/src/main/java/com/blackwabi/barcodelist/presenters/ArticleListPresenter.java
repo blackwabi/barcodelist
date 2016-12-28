@@ -1,6 +1,7 @@
 package com.blackwabi.barcodelist.presenters;
 
 import com.blackwabi.barcodelist.Navigator;
+import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
 
 import javax.inject.Inject;
@@ -11,13 +12,20 @@ import javax.inject.Inject;
 
 public class ArticleListPresenter extends BasePresenter<ArticleListListFragment> {
     private final Navigator mNavigator;
+    private final DataManager mDataManager;
 
     public void onAddClicked() {
-        //TODO: Implement this
+        mNavigator.goToNewArticleList();
     }
 
     @Inject
-    public ArticleListPresenter(Navigator navigator) {
+    public ArticleListPresenter(Navigator navigator, DataManager dataManager) {
         mNavigator = navigator;
+        mDataManager = dataManager;
+    }
+
+    @Override
+    protected void fragmentInit() {
+        mFragment.setList(mDataManager.getArticleLists());
     }
 }

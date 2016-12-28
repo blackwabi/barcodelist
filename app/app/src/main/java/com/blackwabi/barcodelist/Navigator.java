@@ -31,6 +31,10 @@ public class Navigator {
         replaceFragment(new NewArticleFragment());
     }
 
+    public void goToNewArticleList() {
+        // TODO: Implement this
+    }
+
     private void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = mActivity.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_barcode, fragment);

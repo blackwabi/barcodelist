@@ -1,40 +1,46 @@
 package com.blackwabi.barcodelist.fragments;
 
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.blackwabi.barcodelist.R;
+
+import java.util.List;
 
 /**
  * Created by martinbegleiter on 25/11/16.
  */
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder>{
-    public class ListViewHolder extends RecyclerView.ViewHolder {
-        private final TextView mListName;
+public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.ViewHolder> extends
+        RecyclerView.Adapter<VIEWHOLDER >{
 
-        public ListViewHolder(View itemView) {
-            super(itemView);
-            mListName = (TextView)itemView.findViewById(R.id.list_name);
-        }
+    private List<LISTITEM> mItems;
+
+    protected abstract @LayoutRes int getItemLayout();
+
+    protected abstract VIEWHOLDER initViewHolder(View view);
+
+    protected abstract void bindItemToHolder(VIEWHOLDER holder, LISTITEM listitem);
+
+    public void setList(List<LISTITEM> list) {
+        mItems = list;
     }
 
     @Override
-    public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent);
-        return new ListViewHolder(view);
+    public VIEWHOLDER onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(getItemLayout(), parent);
+        return initViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ListViewHolder holder, int position) {
-
+    public void onBindViewHolder(VIEWHOLDER holder, int position) {
+        bindItemToHolder(holder, mItems.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mItems.size();
     }
 }

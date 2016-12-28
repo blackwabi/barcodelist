@@ -7,11 +7,12 @@ package com.blackwabi.barcodelist.presenters;
 public abstract class BasePresenter<F> {
     protected F mFragment;
 
-    protected F getFragment() {
-        return mFragment;
-    }
-
     public void setFragment(F fragment) {
         mFragment = fragment;
+        fragmentInit();
+    }
+
+    protected void fragmentInit() {
+        // Not implemented, override if needed
     }
 }

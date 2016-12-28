@@ -13,9 +13,6 @@ import android.widget.TextView;
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.presenters.NewArticlePresenter;
-import com.google.zxing.Result;
-
-import org.w3c.dom.Text;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
