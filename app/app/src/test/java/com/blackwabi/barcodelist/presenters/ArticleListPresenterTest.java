@@ -43,7 +43,7 @@ public class ArticleListPresenterTest {
     @Test
     public void onAddClicked() {
         mPresenter.onAddClicked();
-        verify(mNavigator, times(1)).goToNewArticleList();
+        verify(mNavigator, times(1)).goToNewArticleListName();
     }
 
     @Test

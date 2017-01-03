@@ -1,5 +1,6 @@
 package com.blackwabi.barcodelist.fragments;
 
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
@@ -24,14 +25,14 @@ public class ArticleListListFragment extends ListFragment<ArticleList, ArticleLi
     }
 
     @Override
-    protected void initCreatedView(View view) {
+    protected void initCreatedView(View view, Bundle savedInstanceState) {
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(fabView -> getPresenter().onAddClicked());
+        fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
     }
 
     @Override
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
-        getPresenter().setFragment(this);
+        mPresenter.setFragment(this);
     }
 }

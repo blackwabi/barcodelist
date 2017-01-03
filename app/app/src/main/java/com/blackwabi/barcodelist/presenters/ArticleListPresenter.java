@@ -15,7 +15,7 @@ public class ArticleListPresenter extends BasePresenter<ArticleListListFragment>
     private final DataManager mDataManager;
 
     public void onAddClicked() {
-        mNavigator.goToNewArticleList();
+        mNavigator.goToNewArticleListName();
     }
 
     @Inject

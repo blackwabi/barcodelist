@@ -28,7 +28,7 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.article_list);
         mListAdapter = createListAdapter();
         recyclerView.setAdapter(mListAdapter);
-        initCreatedView(view);
+        initCreatedView(view, savedInstanceState);
 
         return view;
     }
@@ -37,7 +37,7 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
 
     protected abstract @LayoutRes int getLayout();
 
-    protected abstract void initCreatedView(View view);
+    protected abstract void initCreatedView(View view, Bundle savedInstanceState);
 
     public void setList(List<I> list) {
         mListAdapter.setList(list);

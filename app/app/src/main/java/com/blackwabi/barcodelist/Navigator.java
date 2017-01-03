@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.blackwabi.barcodelist.fragments.ArticleListFragment;
 import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
 import com.blackwabi.barcodelist.fragments.NewArticleFragment;
+import com.blackwabi.barcodelist.fragments.NewListFragment;
+import com.blackwabi.barcodelist.fragments.NewListNameFragment;
 
 /**
  * Created by martinbegleiter on 04/12/16.
@@ -31,8 +33,8 @@ public class Navigator {
         replaceFragment(new NewArticleFragment());
     }
 
-    public void goToNewArticleList() {
-        // TODO: Implement this
+    public void goToNewArticleListName() {
+        replaceFragment(new NewListNameFragment());
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -40,5 +42,9 @@ public class Navigator {
         transaction.replace(R.id.content_barcode, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void goToNewList(String listName) {
+        replaceFragment(NewListFragment.newInstance(listName));
     }
 }

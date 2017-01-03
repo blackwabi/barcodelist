@@ -1,13 +1,12 @@
 package com.blackwabi.barcodelist.fragments;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 import com.blackwabi.barcodelist.di.ActivityComponentContainer;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.presenters.BasePresenter;
-
-import java.sql.Connection;
 
 import javax.inject.Inject;
 
@@ -15,7 +14,7 @@ import javax.inject.Inject;
  * Created by martinbegleiter on 29/11/16.
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends Fragment{
+public abstract class BaseDialogFragment<P extends BasePresenter> extends DialogFragment {
 
     @Inject
     protected P mPresenter;

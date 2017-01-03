@@ -50,7 +50,7 @@ public class NewArticleFragment extends BaseFragment<NewArticlePresenter> {
     @Override
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
-        getPresenter().setFragment(this);
+        mPresenter.setFragment(this);
     }
 
     @Override
