@@ -26,11 +26,12 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
 
     public void setList(List<LISTITEM> list) {
         mItems = list;
+        notifyDataSetChanged();
     }
 
     @Override
     public VIEWHOLDER onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(getItemLayout(), parent);
+        View view = LayoutInflater.from(parent.getContext()).inflate(getItemLayout(), null);
         return initViewHolder(view);
     }
 
