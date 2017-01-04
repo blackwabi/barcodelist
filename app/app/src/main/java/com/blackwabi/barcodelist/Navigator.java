@@ -1,5 +1,7 @@
 package com.blackwabi.barcodelist;
 
+import android.support.annotation.StringRes;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -22,19 +24,33 @@ public class Navigator {
     }
 
     public void goToArticles() {
-        replaceFragment(new ArticleListFragment());
+        replaceFragment(new ArticleListFragment(), R.string.articles);
     }
 
     public void goToLists() {
-        replaceFragment(new ArticleListListFragment());
+        replaceFragment(new ArticleListListFragment(), R.string.article_lists);
     }
 
     public void goToNewArticle() {
-        replaceFragment(new NewArticleFragment());
+        replaceFragment(new NewArticleFragment(), R.string.new_article);
     }
 
     public void goToNewArticleListName() {
-        replaceFragment(new NewListNameFragment());
+        showDialogFragment(new NewListNameFragment());
+    }
+
+    public void goToNewList(String listName) {
+        replaceFragment(NewListFragment.newInstance(listName), listName);
+    }
+
+    private void replaceFragment(Fragment fragment, String title) {
+        replaceFragment(fragment);
+        mActivity.setTitle(title);
+    }
+
+    private void replaceFragment(Fragment fragment, @StringRes int id) {
+        replaceFragment(fragment);
+        mActivity.setTitle(id);
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -44,7 +60,7 @@ public class Navigator {
         transaction.commit();
     }
 
-    public void goToNewList(String listName) {
-        replaceFragment(NewListFragment.newInstance(listName));
+    private void showDialogFragment(DialogFragment fragment) {
+        fragment.show(mActivity.getSupportFragmentManager(), "dialog");
     }
 }
