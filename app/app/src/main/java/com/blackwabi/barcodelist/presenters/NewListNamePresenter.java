@@ -23,6 +23,7 @@ public class NewListNamePresenter extends BasePresenter<NewListNameFragment> {
     }
 
     public void onCancelClick() {
+        mFragment.dismiss();
         mNavigator.goToLists();
     }
 }
