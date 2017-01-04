@@ -1,6 +1,7 @@
 package com.blackwabi.barcodelist.presenters;
 
 import com.blackwabi.barcodelist.Navigator;
+import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.fragments.NewListNameFragment;
 
 import org.junit.Before;
@@ -24,19 +25,23 @@ public class NewListNamePresenterTest {
     Navigator mNavigator;
 
     @Mock
+    DataManager mDataManager;
+
+    @Mock
     NewListNameFragment mFragment;
 
     NewListNamePresenter mPresenter;
 
     @Before
     public void setUp() throws Exception {
-        mPresenter = new NewListNamePresenter(mNavigator);
+        mPresenter = new NewListNamePresenter(mNavigator, mDataManager);
         mPresenter.setFragment(mFragment);
     }
 
     @Test
     public void onSaveListNameClick() throws Exception {
         mPresenter.onSaveListNameClick(LIST_NAME);
+        verify(mDataManager, times(1)).addArticleList(LIST_NAME);
         verify(mNavigator, times(1)).goToNewList(LIST_NAME);
     }
 
