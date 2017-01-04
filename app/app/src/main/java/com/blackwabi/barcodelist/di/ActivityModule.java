@@ -1,6 +1,5 @@
 package com.blackwabi.barcodelist.di;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.blackwabi.barcodelist.Navigator;

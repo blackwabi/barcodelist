@@ -8,4 +8,8 @@
     <string name="save">Save</string>
     <string name="article_name">Article name</string>
     <string name="article_code">Article code</string>
+    <string name="articles">Articles</string>
+    <string name="article_lists">Article Lists</string>
+    <string name="new_article">New Article</string>
+    <string name="new_article_list">New Article List</string>
 </resources>

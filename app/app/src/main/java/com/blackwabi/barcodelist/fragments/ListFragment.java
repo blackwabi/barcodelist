@@ -20,13 +20,16 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
 
     private A mListAdapter;
 
+    public ListFragment() {
+        mListAdapter = createListAdapter();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), container, false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.article_list);
-        mListAdapter = createListAdapter();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setAdapter(mListAdapter);
         initCreatedView(view, savedInstanceState);
 
