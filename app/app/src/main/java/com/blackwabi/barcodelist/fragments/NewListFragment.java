@@ -1,6 +1,9 @@
 package com.blackwabi.barcodelist.fragments;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.blackwabi.barcodelist.R;
@@ -30,7 +33,10 @@ public class NewListFragment extends ListFragment<Article, ArticleAdapter, NewLi
 
     @Override
     protected void initCreatedView(View view, Bundle savedInstanceState) {
-        //TODO: Implement this
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
