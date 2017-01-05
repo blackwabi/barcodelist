@@ -14,9 +14,10 @@ import java.util.List;
  */
 
 public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.ViewHolder> extends
-        RecyclerView.Adapter<VIEWHOLDER>{
+        RecyclerView.Adapter<VIEWHOLDER> {
 
     private List<LISTITEM> mItems;
+    private ListFragment.ItemClickListener<LISTITEM> mItemClickListener;
 
     protected abstract @LayoutRes int getItemLayout();
 
@@ -37,11 +38,19 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
 
     @Override
     public void onBindViewHolder(VIEWHOLDER holder, int position) {
-        bindItemToHolder(holder, mItems.get(position));
+        final LISTITEM listitem = mItems.get(position);
+        bindItemToHolder(holder, listitem);
+        if (mItemClickListener != null) {
+            holder.itemView.setOnClickListener(view -> mItemClickListener.onItemClicked(position, listitem));
+        }
     }
 
     @Override
     public int getItemCount() {
         return mItems.size();
+    }
+
+    public void setOnItemClickListener(ListFragment.ItemClickListener<LISTITEM> itemClickListener) {
+        mItemClickListener = itemClickListener;
     }
 }

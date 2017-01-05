@@ -38,11 +38,19 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
 
     protected abstract A createListAdapter();
 
+    public void setOnItemClickListener(ItemClickListener<I> itemClickListener) {
+        mListAdapter.setOnItemClickListener(itemClickListener);
+    }
+
     protected abstract @LayoutRes int getLayout();
 
     protected abstract void initCreatedView(View view, Bundle savedInstanceState);
 
     public void setList(List<I> list) {
         mListAdapter.setList(list);
+    }
+
+    public interface ItemClickListener<ITEM> {
+        void onItemClicked(int position, ITEM item);
     }
 }
