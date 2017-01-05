@@ -27,15 +27,18 @@ public class ArticleListAdapter extends ListAdapter<ArticleList, ArticleListAdap
     @Override
     protected void bindItemToHolder(ArticleListViewHolder holder, ArticleList articleList) {
         holder.mListName.setText(articleList.listName);
+        holder.mNumberOfItems.setText(String.valueOf(articleList.articles.size()));
     }
 
     public class ArticleListViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView mListName;
+        private final TextView mNumberOfItems;
 
         public ArticleListViewHolder(View itemView) {
             super(itemView);
             mListName = (TextView)itemView.findViewById(R.id.list_name);
+            mNumberOfItems = (TextView)itemView.findViewById(R.id.number_of_items);
         }
     }
 }

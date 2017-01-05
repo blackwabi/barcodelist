@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -23,6 +24,7 @@ public class NewListNameFragment extends BaseDialogFragment<NewListNamePresenter
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         editText.setLayoutParams(lp);
+        editText.setGravity(Gravity.CENTER);
         editText.setHint("List name");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("Create new article list")

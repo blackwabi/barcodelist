@@ -43,6 +43,7 @@ public class NewListFragment extends ListFragment<Article, ArticleAdapter, NewLi
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
         mPresenter.setFragment(this);
+        mPresenter.setListName(getArguments().getString(ARGS_LIST_NAME));
     }
 
     public static NewListFragment newInstance(String listName) {

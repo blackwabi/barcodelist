@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.ViewHolder> extends
-        RecyclerView.Adapter<VIEWHOLDER >{
+        RecyclerView.Adapter<VIEWHOLDER>{
 
     private List<LISTITEM> mItems;
 
@@ -31,7 +31,7 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
 
     @Override
     public VIEWHOLDER onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(getItemLayout(), null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(getItemLayout(), parent, false);
         return initViewHolder(view);
     }
 
