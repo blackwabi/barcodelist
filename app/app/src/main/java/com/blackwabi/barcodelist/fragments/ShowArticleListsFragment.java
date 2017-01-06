@@ -32,6 +32,7 @@ public class ShowArticleListsFragment extends ListFragment<ArticleList, ArticleL
         fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        setOnItemClickListener(((position, articleList) -> mPresenter.onItemClicked(position, articleList)));
     }
 
     @Override

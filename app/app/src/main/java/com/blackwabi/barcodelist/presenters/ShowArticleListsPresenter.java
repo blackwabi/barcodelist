@@ -29,4 +29,8 @@ public class ShowArticleListsPresenter extends BasePresenter<ShowArticleListsFra
     protected void fragmentInit() {
         mFragment.setList(mDataManager.getArticleLists());
     }
+
+    public void onItemClicked(int position, ArticleList articleList) {
+        mNavigator.goToList(articleList.listName);
+    }
 }
