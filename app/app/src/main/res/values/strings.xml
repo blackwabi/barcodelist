@@ -10,6 +10,6 @@
     <string name="article_code">Article code</string>
     <string name="articles">Articles</string>
     <string name="article_lists">Article Lists</string>
-    <string name="new_article">New Article</string>
-    <string name="new_article_list">New Article List</string>
+    <string name="create_article">Create Article</string>
+    <string name="create_article_list">Create Article List</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.blackwabi.barcodelist;
 
-import android.support.annotation.StringRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -24,15 +23,15 @@ public class Navigator {
     }
 
     public void goToArticles() {
-        replaceFragment(new ShowArticlesFragment(), R.string.articles);
+        replaceFragment(new ShowArticlesFragment());
     }
 
     public void goToLists() {
-        replaceFragment(new ShowArticleListsFragment(), R.string.article_lists);
+        replaceFragment(new ShowArticleListsFragment());
     }
 
     public void goToCreateArticle() {
-        replaceFragment(new CreateArticleFragment(), R.string.new_article);
+        replaceFragment(new CreateArticleFragment());
     }
 
     public void goToCreateList() {
@@ -40,17 +39,7 @@ public class Navigator {
     }
 
     public void goToList(String listName) {
-        replaceFragment(UseArticleListFragment.newInstance(listName), listName);
-    }
-
-    private void replaceFragment(Fragment fragment, String title) {
-        replaceFragment(fragment);
-        mActivity.setTitle(title);
-    }
-
-    private void replaceFragment(Fragment fragment, @StringRes int id) {
-        replaceFragment(fragment);
-        mActivity.setTitle(id);
+        replaceFragment(UseArticleListFragment.newInstance(listName));
     }
 
     private void replaceFragment(Fragment fragment) {

@@ -51,6 +51,7 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
         mPresenter.setFragment(this);
+        setTitle(R.string.create_article);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
 
     public void showScanner(boolean show) {
         if (show) {
-            mScannerView = new ZXingScannerView(mContext);
+            mScannerView = new ZXingScannerView(mActivity);
             mScannerView.setResultHandler(mPresenter);
             mScannerLayout.addView(mScannerView);
             mScannerIcon.setVisibility(View.GONE);

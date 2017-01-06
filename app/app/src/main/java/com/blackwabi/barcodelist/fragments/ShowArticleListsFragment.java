@@ -39,5 +39,6 @@ public class ShowArticleListsFragment extends ListFragment<ArticleList, ArticleL
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
         mPresenter.setFragment(this);
+        setTitle(R.string.article_lists);
     }
 }
