@@ -47,6 +47,10 @@ public class Navigator {
         replaceFragment(ChooseArticleFragment.newInstance(listName));
     }
 
+    public void goBack() {
+        mActivity.getSupportFragmentManager().popBackStack();
+    }
+
     private void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = mActivity.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_barcode, fragment);

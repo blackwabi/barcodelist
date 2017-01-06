@@ -33,5 +33,6 @@ public class ChooseArticlePresenter extends BasePresenter<ChooseArticleFragment>
 
     public void onItemClicked(int position, Article article) {
         mDataManager.addExistingArticleToExistingList(mListName, article);
+        mNavigator.goBack();
     }
 }
