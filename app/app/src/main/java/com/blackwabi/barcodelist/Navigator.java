@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.blackwabi.barcodelist.fragments.ChooseArticleFragment;
 import com.blackwabi.barcodelist.fragments.CreateListFragment;
 import com.blackwabi.barcodelist.fragments.ShowArticlesFragment;
 import com.blackwabi.barcodelist.fragments.CreateArticleFragment;
@@ -40,6 +41,10 @@ public class Navigator {
 
     public void goToList(String listName) {
         replaceFragment(UseArticleListFragment.newInstance(listName));
+    }
+
+    public void goToChooseArticle(String listName) {
+        replaceFragment(ChooseArticleFragment.newInstance(listName));
     }
 
     private void replaceFragment(Fragment fragment) {

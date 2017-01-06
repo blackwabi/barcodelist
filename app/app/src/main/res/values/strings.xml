@@ -12,4 +12,5 @@
     <string name="article_lists">Article Lists</string>
     <string name="create_article">Create Article</string>
     <string name="create_article_list">Create Article List</string>
+    <string name="choose_article_for_list">Choose article for %s</string>
 </resources>

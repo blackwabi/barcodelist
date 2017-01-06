@@ -1,5 +1,6 @@
 package com.blackwabi.barcodelist.di;
 
+import com.blackwabi.barcodelist.fragments.ChooseArticleFragment;
 import com.blackwabi.barcodelist.fragments.CreateListFragment;
 import com.blackwabi.barcodelist.fragments.ShowArticlesFragment;
 import com.blackwabi.barcodelist.fragments.ShowArticleListsFragment;
@@ -22,4 +23,6 @@ public interface FragmentComponent {
     void inject(CreateListFragment createListFragment);
 
     void inject(UseArticleListFragment useArticleListFragment);
+
+    void inject(ChooseArticleFragment chooseArticleFragment);
 }

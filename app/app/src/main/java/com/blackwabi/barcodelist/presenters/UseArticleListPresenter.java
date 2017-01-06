@@ -23,7 +23,7 @@ public class UseArticleListPresenter extends BasePresenter<UseArticleListFragmen
     }
 
     public void onAddClicked() {
-        // TODO: Implement
+        mNavigator.goToChooseArticle(mListName);
     }
 
     @Override
