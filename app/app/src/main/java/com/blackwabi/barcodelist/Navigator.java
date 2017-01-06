@@ -6,11 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.blackwabi.barcodelist.fragments.ArticleListFragment;
-import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
-import com.blackwabi.barcodelist.fragments.NewArticleFragment;
-import com.blackwabi.barcodelist.fragments.NewListFragment;
-import com.blackwabi.barcodelist.fragments.NewListNameFragment;
+import com.blackwabi.barcodelist.fragments.CreateListFragment;
+import com.blackwabi.barcodelist.fragments.ShowArticlesFragment;
+import com.blackwabi.barcodelist.fragments.CreateArticleFragment;
+import com.blackwabi.barcodelist.fragments.ShowArticleListsFragment;
+import com.blackwabi.barcodelist.fragments.UseArticleListFragment;
 
 /**
  * Created by martinbegleiter on 04/12/16.
@@ -24,23 +24,23 @@ public class Navigator {
     }
 
     public void goToArticles() {
-        replaceFragment(new ArticleListFragment(), R.string.articles);
+        replaceFragment(new ShowArticlesFragment(), R.string.articles);
     }
 
     public void goToLists() {
-        replaceFragment(new ArticleListListFragment(), R.string.article_lists);
+        replaceFragment(new ShowArticleListsFragment(), R.string.article_lists);
     }
 
-    public void goToNewArticle() {
-        replaceFragment(new NewArticleFragment(), R.string.new_article);
+    public void goToCreateArticle() {
+        replaceFragment(new CreateArticleFragment(), R.string.new_article);
     }
 
-    public void goToNewArticleListName() {
-        showDialogFragment(new NewListNameFragment());
+    public void goToCreateList() {
+        showDialogFragment(new CreateListFragment());
     }
 
-    public void goToNewList(String listName) {
-        replaceFragment(NewListFragment.newInstance(listName), listName);
+    public void goToList(String listName) {
+        replaceFragment(UseArticleListFragment.newInstance(listName), listName);
     }
 
     private void replaceFragment(Fragment fragment, String title) {

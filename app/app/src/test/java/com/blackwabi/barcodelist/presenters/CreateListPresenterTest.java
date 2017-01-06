@@ -2,7 +2,7 @@ package com.blackwabi.barcodelist.presenters;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
-import com.blackwabi.barcodelist.fragments.NewListNameFragment;
+import com.blackwabi.barcodelist.fragments.CreateListFragment;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verify;
  * Created by martinbegleiter on 26/12/16.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class NewListNamePresenterTest {
+public class CreateListPresenterTest {
 
     private static final String LIST_NAME = "LIST_NAME";
 
@@ -28,13 +28,13 @@ public class NewListNamePresenterTest {
     DataManager mDataManager;
 
     @Mock
-    NewListNameFragment mFragment;
+    CreateListFragment mFragment;
 
-    NewListNamePresenter mPresenter;
+    CreateListPresenter mPresenter;
 
     @Before
     public void setUp() throws Exception {
-        mPresenter = new NewListNamePresenter(mNavigator, mDataManager);
+        mPresenter = new CreateListPresenter(mNavigator, mDataManager);
         mPresenter.setFragment(mFragment);
     }
 
@@ -42,7 +42,7 @@ public class NewListNamePresenterTest {
     public void onSaveListNameClick() throws Exception {
         mPresenter.onSaveListNameClick(LIST_NAME);
         verify(mDataManager, times(1)).addArticleList(LIST_NAME);
-        verify(mNavigator, times(1)).goToNewList(LIST_NAME);
+        verify(mNavigator, times(1)).goToList(LIST_NAME);
     }
 
     @Test

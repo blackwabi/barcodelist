@@ -9,12 +9,12 @@ import android.view.View;
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.ArticlePresenter;
+import com.blackwabi.barcodelist.presenters.ShowArticlesPresenter;
 
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ArticleListFragment extends ListFragment<Article, ArticleAdapter, ArticlePresenter> {
+public class ShowArticlesFragment extends ListFragment<Article, ArticleAdapter, ShowArticlesPresenter> {
 
     @Override
     protected ArticleAdapter createListAdapter() {

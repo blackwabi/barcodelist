@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.NewArticlePresenter;
+import com.blackwabi.barcodelist.presenters.CreateArticlePresenter;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -21,7 +21,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by martinbegleiter on 04/12/16.
  */
 
-public class NewArticleFragment extends BaseFragment<NewArticlePresenter> {
+public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> {
 
     private TextView mArticleName;
     private ZXingScannerView mScannerView;

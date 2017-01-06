@@ -3,7 +3,7 @@ package com.blackwabi.barcodelist.presenters;
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.ArticleList;
-import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
+import com.blackwabi.barcodelist.fragments.ShowArticleListsFragment;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
  * Created by martinbegleiter on 26/12/16.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ArticleListPresenterTest {
+public class ShowArticleListsPresenterTest {
 
     @Mock
     Navigator mNavigator;
@@ -31,19 +31,19 @@ public class ArticleListPresenterTest {
     DataManager mDataManager;
 
     @Mock
-    ArticleListListFragment mFragment;
+    ShowArticleListsFragment mFragment;
 
-    ArticleListPresenter mPresenter;
+    ShowArticleListsPresenter mPresenter;
 
     @Before
     public void setUp() throws Exception {
-        mPresenter = new ArticleListPresenter(mNavigator, mDataManager);
+        mPresenter = new ShowArticleListsPresenter(mNavigator, mDataManager);
     }
 
     @Test
     public void onAddClicked() {
         mPresenter.onAddClicked();
-        verify(mNavigator, times(1)).goToNewArticleListName();
+        verify(mNavigator, times(1)).goToCreateList();
     }
 
     @Test

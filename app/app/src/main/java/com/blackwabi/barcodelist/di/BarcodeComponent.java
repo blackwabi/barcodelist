@@ -2,8 +2,6 @@ package com.blackwabi.barcodelist.di;
 
 import com.blackwabi.barcodelist.BarcodeApp;
 import com.blackwabi.barcodelist.data.DataManager;
-import com.blackwabi.barcodelist.fragments.ArticleListFragment;
-import com.blackwabi.barcodelist.fragments.ArticleListListFragment;
 
 import dagger.Component;
 

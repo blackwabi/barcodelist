@@ -9,13 +9,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.NewListNamePresenter;
+import com.blackwabi.barcodelist.presenters.CreateListPresenter;
 
 /**
  * Created by martinbegleiter on 28/12/16.
  */
 
-public class NewListNameFragment extends BaseDialogFragment<NewListNamePresenter> {
+public class CreateListFragment extends BaseDialogFragment<CreateListPresenter> {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

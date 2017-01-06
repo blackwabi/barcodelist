@@ -3,7 +3,6 @@ package com.blackwabi.barcodelist.di;
 import android.content.Context;
 
 import com.blackwabi.barcodelist.BarcodeApp;
-import com.blackwabi.barcodelist.presenters.ArticleListPresenter;
 
 import dagger.Module;
 import dagger.Provides;
