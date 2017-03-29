@@ -2,6 +2,7 @@ package com.blackwabi.barcodelist.data;
 
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.data.model.ArticleList;
+import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ public class DataManager {
     }
 
     public void addArticle(String articleName, String articleCode) {
+        Preconditions.checkNotNull(articleName);
+        Preconditions.checkNotNull(articleCode);
         final Article article = new Article();
         article.articleName = articleName;
         article.articleCode = articleCode;
@@ -33,6 +36,7 @@ public class DataManager {
     }
 
     public void addArticleList(String listName) {
+        Preconditions.checkNotNull(listName);
         final ArticleList articleList = new ArticleList();
         articleList.listName = listName;
         articleList.articles = new RealmList<>();
@@ -40,6 +44,8 @@ public class DataManager {
     }
 
     public void addExistingArticleToExistingList(String listName, Article article) {
+        Preconditions.checkNotNull(listName);
+        Preconditions.checkNotNull(article);
         ArticleList list = mRealm.where(ArticleList.class).findFirst();
         mRealm.executeTransaction(realm -> {
             list.articles.add(article);
@@ -56,6 +62,7 @@ public class DataManager {
     }
 
     public List<Article> getArticlesInList(String listName) {
+        Preconditions.checkNotNull(listName);
         ArticleList articleList = mRealm.where(ArticleList.class).contains("listName", listName)
                 .findFirst();
         if (articleList != null) {
