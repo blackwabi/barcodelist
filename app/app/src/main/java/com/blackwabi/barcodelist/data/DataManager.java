@@ -41,8 +41,10 @@ public class DataManager {
 
     public void addExistingArticleToExistingList(String listName, Article article) {
         ArticleList list = mRealm.where(ArticleList.class).findFirst();
-        list.articles.add(article);
-        mRealm.executeTransaction(realm -> realm.copyToRealmOrUpdate(list));
+        mRealm.executeTransaction(realm -> {
+            list.articles.add(article);
+            realm.copyToRealmOrUpdate(list);
+        });
     }
 
     public List<Article> getArticles() {
