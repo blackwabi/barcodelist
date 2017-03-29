@@ -1,0 +1,4 @@
+#!/usr/local/bin/fish
+adb pull /data/data/com.blackwabi.barcodelist/files/default.realm
+
+open default.realm
