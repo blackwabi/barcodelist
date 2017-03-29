@@ -22,6 +22,16 @@ public class ShowArticlesPresenter extends BasePresenter<ShowArticlesFragment> {
     public ShowArticlesPresenter(Navigator navigator, DataManager dataManager) {
         mNavigator = navigator;
         mDataManager = dataManager;
+        //createArticles();
+    }
+
+    private void createArticles() {
+        mDataManager.addArticle("Heinz Ketchup", "111");
+        mDataManager.addArticle("Korv", "222");
+        mDataManager.addArticle("Bröd", "333");
+        mDataManager.addArticle("Senap", "444");
+        mDataManager.addArticle("Choklad", "555");
+        mDataManager.addArticle("Mjölk", "555");
     }
 
     @Override
