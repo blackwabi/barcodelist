@@ -11,10 +11,9 @@ import javax.inject.Inject;
  * Created by martinbegleiter on 29/11/16.
  */
 
-public class ChooseArticlePresenter extends BasePresenter<ChooseArticleFragment> {
+public class ChooseArticlePresenter extends NamedListPresenter<ChooseArticleFragment> {
     private final Navigator mNavigator;
     private final DataManager mDataManager;
-    private String mListName;
 
     @Inject
     public ChooseArticlePresenter(Navigator navigator, DataManager dataManager) {
@@ -25,10 +24,6 @@ public class ChooseArticlePresenter extends BasePresenter<ChooseArticleFragment>
     @Override
     protected void fragmentInit() {
         mFragment.setList(mDataManager.getArticles());
-    }
-
-    public void setListName(String listName) {
-        mListName = listName;
     }
 
     public void onItemClicked(int position, Article article) {
