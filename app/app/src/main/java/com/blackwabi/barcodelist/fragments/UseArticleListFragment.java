@@ -42,9 +42,9 @@ public class UseArticleListFragment extends ListFragment<Article, ArticleAdapter
     @Override
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
-        mPresenter.setFragment(this);
         final String listName = getArguments().getString(ARGS_LIST_NAME);
         mPresenter.setListName(listName);
+        mPresenter.setFragment(this);
         setTitle(listName);
     }
 

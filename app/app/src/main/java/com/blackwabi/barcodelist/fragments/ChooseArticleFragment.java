@@ -37,9 +37,9 @@ public class ChooseArticleFragment extends ListFragment<Article, ArticleAdapter,
     @Override
     protected void injectIntoComponentAndPresenter(FragmentComponent component) {
         component.inject(this);
-        mPresenter.setFragment(this);
         final String listName = getArguments().getString(ARGS_LIST_NAME);
         mPresenter.setListName(listName);
+        mPresenter.setFragment(this);
         final String title = getResources().getString(R.string.choose_article_for_list, listName);
         setTitle(title);
     }
