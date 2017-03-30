@@ -14,11 +14,11 @@ import com.blackwabi.barcodelist.presenters.ShowArticlesPresenter;
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ShowArticlesFragment extends ListFragment<Article, ArticleAdapter, ShowArticlesPresenter> {
+public class ShowArticlesFragment extends ListFragment<Article, ArticleCardAdapter, ShowArticlesPresenter> {
 
     @Override
-    protected ArticleAdapter createListAdapter() {
-        return new ArticleAdapter();
+    protected ArticleCardAdapter createListAdapter() {
+        return new ArticleCardAdapter();
     }
 
     @Override
