@@ -18,6 +18,7 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
 
     private List<LISTITEM> mItems;
     private ListFragment.ItemClickListener<LISTITEM> mItemClickListener;
+    private ListFragment.ItemLongClickListener<LISTITEM> mItemLongClickListener;
 
     protected abstract @LayoutRes int getItemLayout();
 
@@ -42,6 +43,7 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
         bindItemToHolder(holder, listitem);
         if (mItemClickListener != null) {
             holder.itemView.setOnClickListener(view -> mItemClickListener.onItemClicked(position, listitem));
+            holder.itemView.setOnLongClickListener(view -> mItemLongClickListener.onItemLongClicked(position, listitem));
         }
     }
 
@@ -52,5 +54,9 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
 
     public void setOnItemClickListener(ListFragment.ItemClickListener<LISTITEM> itemClickListener) {
         mItemClickListener = itemClickListener;
+    }
+
+    public void setOnItemLongClickListener(ListFragment.ItemLongClickListener<LISTITEM> itemLongClickListener) {
+        mItemLongClickListener = itemLongClickListener;
     }
 }
