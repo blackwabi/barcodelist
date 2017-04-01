@@ -24,7 +24,7 @@ public class ArticleCardAdapter extends ListAdapter<Article, ArticleCardAdapter.
     }
 
     @Override
-    protected void bindItemToHolder(ArticleCardViewHolder holder, Article article) {
+    protected void bindItemToHolder(ArticleCardViewHolder holder, Article article, boolean removalMode) {
         holder.mArticleName.setText(article.articleName);
     }
 

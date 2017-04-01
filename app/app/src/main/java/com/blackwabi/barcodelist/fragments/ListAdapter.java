@@ -1,6 +1,7 @@
 package com.blackwabi.barcodelist.fragments;
 
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,26 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
         RecyclerView.Adapter<VIEWHOLDER> {
 
     private List<LISTITEM> mItems;
-    private ListFragment.ItemClickListener<LISTITEM> mItemClickListener;
-    private ListFragment.ItemLongClickListener<LISTITEM> mItemLongClickListener;
+    private ListFragment.ItemClickListener<LISTITEM> mItemClickListener = new ListFragment.ItemClickListener<LISTITEM>() {
+        @Override
+        public void onItemClicked(int position, LISTITEM listitem) {
+            // Do nothing
+        }
+    };
+    private ListFragment.ItemClickListener<LISTITEM> mItemRemoveClickListener = new ListFragment.ItemClickListener<LISTITEM>() {
+        @Override
+        public void onItemClicked(int position, LISTITEM listitem) {
+            // Do nothing
+        }
+    };
+
+    private boolean mRemovalMode;
 
     protected abstract @LayoutRes int getItemLayout();
 
     protected abstract VIEWHOLDER initViewHolder(View view);
 
-    protected abstract void bindItemToHolder(VIEWHOLDER holder, LISTITEM listitem);
+    protected abstract void bindItemToHolder(VIEWHOLDER holder, LISTITEM listitem, boolean removalMode);
 
     public void setList(List<LISTITEM> list) {
         mItems = list;
@@ -40,10 +53,19 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
     @Override
     public void onBindViewHolder(VIEWHOLDER holder, int position) {
         final LISTITEM listitem = mItems.get(position);
-        bindItemToHolder(holder, listitem);
-        if (mItemClickListener != null) {
-            holder.itemView.setOnClickListener(view -> mItemClickListener.onItemClicked(position, listitem));
-            holder.itemView.setOnLongClickListener(view -> mItemLongClickListener.onItemLongClicked(position, listitem));
+        bindItemToHolder(holder, listitem, mRemovalMode);
+        holder.itemView.setOnClickListener(view -> onItemClicked(position, listitem));
+    }
+
+    private void onItemClicked(int position, LISTITEM item) {
+        if (mRemovalMode) {
+            if (mItemRemoveClickListener != null) {
+                mItemRemoveClickListener.onItemClicked(position, item);
+            }
+        } else {
+            if (mItemClickListener != null) {
+                mItemClickListener.onItemClicked(position, item);
+            }
         }
     }
 
@@ -56,7 +78,12 @@ public abstract class ListAdapter<LISTITEM, VIEWHOLDER extends RecyclerView.View
         mItemClickListener = itemClickListener;
     }
 
-    public void setOnItemLongClickListener(ListFragment.ItemLongClickListener<LISTITEM> itemLongClickListener) {
-        mItemLongClickListener = itemLongClickListener;
+    public void setOnItemRemoveClickListener(ListFragment.ItemClickListener<LISTITEM> itemRemoveClickListener) {
+        mItemRemoveClickListener = itemRemoveClickListener;
+    }
+
+    public void setRemovalMode(boolean remove) {
+        mRemovalMode = remove;
+        notifyDataSetChanged();
     }
 }

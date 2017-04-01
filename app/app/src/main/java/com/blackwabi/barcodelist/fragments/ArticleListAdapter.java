@@ -25,7 +25,7 @@ public class ArticleListAdapter extends ListAdapter<ArticleList, ArticleListAdap
     }
 
     @Override
-    protected void bindItemToHolder(ArticleListViewHolder holder, ArticleList articleList) {
+    protected void bindItemToHolder(ArticleListViewHolder holder, ArticleList articleList, boolean removalMode) {
         holder.mListName.setText(articleList.listName);
         holder.mNumberOfItems.setText(String.valueOf(articleList.articles.size()));
     }

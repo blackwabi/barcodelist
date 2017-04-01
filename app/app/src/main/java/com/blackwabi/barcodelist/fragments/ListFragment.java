@@ -42,8 +42,8 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
         mListAdapter.setOnItemClickListener(itemClickListener);
     }
 
-    public void setOnItemLongClickListener(ItemLongClickListener<I> itemLongClickListener) {
-        mListAdapter.setOnItemLongClickListener(itemLongClickListener);
+    public void setOnItemRemoveClickListener(ItemClickListener<I> itemRemoveClickListener) {
+        mListAdapter.setOnItemRemoveClickListener(itemRemoveClickListener);
     }
 
     protected abstract @LayoutRes int getLayout();
@@ -56,9 +56,5 @@ public abstract class ListFragment<I, A extends ListAdapter<I, ? extends Recycle
 
     public interface ItemClickListener<ITEM> {
         void onItemClicked(int position, ITEM item);
-    }
-
-    public interface ItemLongClickListener<ITEM> {
-        boolean onItemLongClicked(int position, ITEM item);
     }
 }
