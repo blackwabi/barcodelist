@@ -13,7 +13,7 @@ import com.blackwabi.barcodelist.presenters.ChooseArticlePresenter;
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ChooseArticleFragment extends ListFragment<Article, ArticleCardAdapter, ChooseArticlePresenter> {
+public class ChooseArticleFragment extends RemovalListFragment<Article, ArticleCardAdapter, ChooseArticlePresenter> {
 
     private static final String ARGS_LIST_NAME = "list_name";
 

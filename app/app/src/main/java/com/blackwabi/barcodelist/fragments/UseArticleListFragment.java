@@ -17,7 +17,7 @@ import com.blackwabi.barcodelist.presenters.UseArticleListPresenter;
 
 // TODO: If we want to have a different layout of article items than in the article list,
 // then we need to create a specific adapter. Using articleadapter for now
-public class UseArticleListFragment extends ListFragment<Article, ArticleAdapter, UseArticleListPresenter> {
+public class UseArticleListFragment extends RemovalListFragment<Article, ArticleAdapter, UseArticleListPresenter> {
 
     private static final String ARGS_LIST_NAME = "list_name";
 
@@ -33,7 +33,7 @@ public class UseArticleListFragment extends ListFragment<Article, ArticleAdapter
 
     @Override
     protected void initCreatedView(View view, Bundle savedInstanceState) {
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.add_fab);
         fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

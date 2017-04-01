@@ -5,13 +5,16 @@ import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.fragments.ChooseArticleFragment;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
  * Created by martinbegleiter on 29/11/16.
  */
 
-public class ChooseArticlePresenter extends NamedListPresenter<ChooseArticleFragment> {
+public class ChooseArticlePresenter extends NamedListPresenter<Article, ChooseArticleFragment> {
     private final Navigator mNavigator;
     private final DataManager mDataManager;
 
@@ -22,8 +25,23 @@ public class ChooseArticlePresenter extends NamedListPresenter<ChooseArticleFrag
     }
 
     @Override
-    protected void fragmentInit() {
-        mFragment.setList(mDataManager.getArticles());
+    protected boolean shouldShowFabs() {
+        return false;
+    }
+
+    @Override
+    public void removeItems(List<Article> articles) {
+        // Not needed
+    }
+
+    @Override
+    public void onAddClicked() {
+        // Not needed
+    }
+
+    @Override
+    public List<Article> getItems() {
+        return mDataManager.getArticles();
     }
 
     public void onItemClicked(int position, Article article) {

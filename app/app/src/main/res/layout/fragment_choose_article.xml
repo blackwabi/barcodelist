@@ -12,4 +12,6 @@
         android:id="@+id/list"
         tools:listitem="@layout/article_item" />
 
+    <include layout="@layout/fab_buttons" />
+
 </android.support.design.widget.CoordinatorLayout>

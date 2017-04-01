@@ -14,7 +14,7 @@ import com.blackwabi.barcodelist.presenters.ShowArticlesPresenter;
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ShowArticlesFragment extends ListFragment<Article, ArticleCardAdapter, ShowArticlesPresenter> {
+public class ShowArticlesFragment extends RemovalListFragment<Article, ArticleCardAdapter, ShowArticlesPresenter> {
 
     @Override
     protected ArticleCardAdapter createListAdapter() {
@@ -28,7 +28,7 @@ public class ShowArticlesFragment extends ListFragment<Article, ArticleCardAdapt
 
     @Override
     public void initCreatedView(View view, Bundle savedInstanceState) {
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.add_fab);
         fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));

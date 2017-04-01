@@ -6,12 +6,13 @@ import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.ArticleList;
+import com.blackwabi.barcodelist.presenters.CheckedListItem;
 
 /**
  * Created by martinbegleiter on 25/11/16.
  */
 
-public class ArticleListAdapter extends ListAdapter<ArticleList, ArticleListAdapter
+public class ArticleListAdapter extends RemovalListAdapter<ArticleList, ArticleListAdapter
         .ArticleListViewHolder> {
 
     @Override
@@ -25,9 +26,9 @@ public class ArticleListAdapter extends ListAdapter<ArticleList, ArticleListAdap
     }
 
     @Override
-    protected void bindItemToHolder(ArticleListViewHolder holder, ArticleList articleList, boolean removalMode) {
-        holder.mListName.setText(articleList.listName);
-        holder.mNumberOfItems.setText(String.valueOf(articleList.articles.size()));
+    protected void bindItemToHolder(ArticleListViewHolder holder, CheckedListItem<ArticleList> listitem, boolean removalMode) {
+        holder.mListName.setText(listitem.getItem().listName);
+        holder.mNumberOfItems.setText(String.valueOf(listitem.getItem().articles.size()));
     }
 
     public class ArticleListViewHolder extends RecyclerView.ViewHolder {

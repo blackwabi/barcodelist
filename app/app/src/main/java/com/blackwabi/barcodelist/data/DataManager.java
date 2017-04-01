@@ -71,4 +71,32 @@ public class DataManager {
             return new ArrayList<>();
         }
     }
+
+    public void removeArticleLists(List<ArticleList> articleLists) {
+        mRealm.executeTransaction(realm -> {
+            for (ArticleList list : articleLists) {
+                list.deleteFromRealm();
+            }
+        });
+    }
+
+    public void removeArticles(List<Article> articles) {
+        mRealm.executeTransaction(realm -> {
+            for (Article article : articles) {
+                article.deleteFromRealm();
+            }
+        });
+    }
+
+    public void removeArticlesFromSpecificList(String listName, List<Article> articles) {
+        Preconditions.checkNotNull(listName);
+        Preconditions.checkNotNull(articles);
+        ArticleList list = mRealm.where(ArticleList.class).contains("listName", listName).findFirst();
+        mRealm.executeTransaction(realm -> {
+            for (Article article : articles) {
+                list.articles.remove(article);
+            }
+            realm.copyToRealmOrUpdate(list);
+        });
+    }
 }
