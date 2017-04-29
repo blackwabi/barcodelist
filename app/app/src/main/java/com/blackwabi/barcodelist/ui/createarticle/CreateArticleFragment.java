@@ -1,5 +1,6 @@
 package com.blackwabi.barcodelist.ui.createarticle;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
     private FrameLayout mScannerLayout;
     private TextView mArticleCode;
     private ImageView mScannerIcon;
+    private ImageView mAddPhoto;
+    private ImageView mArticleImage;
 
     @Nullable
     @Override
@@ -36,8 +39,14 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
         mArticleName = (TextView) view.findViewById(R.id.articleName);
 
         mArticleCode = (TextView) view.findViewById(R.id.articleCode);
+
         mScannerIcon = (ImageView) view.findViewById(R.id.scannerIcon);
         mScannerIcon.setOnClickListener(view1 -> mPresenter.onScannerClicked());
+
+        mAddPhoto = (ImageView) view.findViewById(R.id.addPhoto);
+        mAddPhoto.setOnClickListener(view1 -> mPresenter.onAddPhoto());
+
+        mArticleImage = (ImageView) view.findViewById(R.id.articleImage);
 
         mScannerLayout = (FrameLayout) view.findViewById(R.id.scannerContainer);
 
@@ -76,10 +85,14 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
             mScannerView.setResultHandler(mPresenter);
             mScannerLayout.addView(mScannerView);
             mScannerIcon.setVisibility(View.GONE);
+            mAddPhoto.setVisibility(View.GONE);
+            mArticleImage.setVisibility(View.GONE);
             mScannerLayout.setVisibility(View.VISIBLE);
             mScannerView.startCamera();
         } else {
             mScannerIcon.setVisibility(View.VISIBLE);
+            mAddPhoto.setVisibility(View.VISIBLE);
+            mArticleImage.setVisibility(View.VISIBLE);
             mScannerLayout.setVisibility(View.GONE);
             mScannerLayout.removeAllViews();
             mScannerView.stopCamera();
@@ -89,5 +102,9 @@ public class CreateArticleFragment extends BaseFragment<CreateArticlePresenter> 
 
     public void setScannedCode(String scannedCode) {
         mArticleCode.setText(scannedCode);
+    }
+
+    public void setArticleImage(@Nullable Uri photoUri) {
+        mArticleImage.setImageURI(photoUri);
     }
 }

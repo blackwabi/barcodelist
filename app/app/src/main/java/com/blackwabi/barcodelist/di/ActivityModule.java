@@ -2,6 +2,7 @@ package com.blackwabi.barcodelist.di;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.blackwabi.barcodelist.BarcodeActivity;
 import com.blackwabi.barcodelist.Navigator;
 
 import dagger.Module;
@@ -12,14 +13,19 @@ import dagger.Provides;
  */
 @Module
 public class ActivityModule {
-    private final AppCompatActivity mActivity;
+    private final BarcodeActivity mActivity;
 
-    public ActivityModule(AppCompatActivity activity) {
+    public ActivityModule(BarcodeActivity activity) {
         mActivity = activity;
     }
 
     @Provides
     Navigator provideNavigator() {
         return new Navigator(mActivity);
+    }
+
+    @Provides
+    BarcodeActivity provideActivity() {
+        return mActivity;
     }
 }
