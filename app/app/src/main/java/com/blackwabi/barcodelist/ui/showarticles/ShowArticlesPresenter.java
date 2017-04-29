@@ -1,5 +1,7 @@
 package com.blackwabi.barcodelist.ui.showarticles;
 
+import android.net.Uri;
+
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.Article;
@@ -34,12 +36,14 @@ public class ShowArticlesPresenter extends RemovalListPresenter<Article, ShowArt
     }
 
     private void createArticles() {
-        mDataManager.addArticle("Heinz Ketchup", "111");
-        mDataManager.addArticle("Korv", "222");
-        mDataManager.addArticle("Bröd", "333");
-        mDataManager.addArticle("Senap", "444");
-        mDataManager.addArticle("Choklad", "555");
-        mDataManager.addArticle("Mjölk", "555");
+        String bunnyUri = Uri.parse("android.resource://com.blackwabi.barcodelist/drawable/babybunny")
+                .toString();
+        mDataManager.addArticle("Heinz Ketchup", "111", bunnyUri);
+        mDataManager.addArticle("Korv", "222", bunnyUri);
+        mDataManager.addArticle("Bröd", "333", bunnyUri);
+        mDataManager.addArticle("Senap", "444", bunnyUri);
+        mDataManager.addArticle("Choklad", "555", bunnyUri);
+        mDataManager.addArticle("Mjölk", "555", bunnyUri);
     }
 
     @Override

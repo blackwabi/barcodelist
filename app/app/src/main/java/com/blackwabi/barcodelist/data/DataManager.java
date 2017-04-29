@@ -25,12 +25,14 @@ public class DataManager {
         mRealm = Realm.getDefaultInstance();
     }
 
-    public void addArticle(String articleName, String articleCode) {
+    public void addArticle(String articleName, String articleCode, String photoUri) {
         Preconditions.checkNotNull(articleName);
         Preconditions.checkNotNull(articleCode);
+        Preconditions.checkNotNull(photoUri);
         final Article article = new Article();
         article.articleName = articleName;
         article.articleCode = articleCode;
+        article.photoUri = photoUri;
 
         mRealm.executeTransaction(realm -> realm.copyToRealmOrUpdate(article));
     }

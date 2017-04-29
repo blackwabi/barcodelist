@@ -12,4 +12,6 @@ public class Article extends RealmObject {
 
     @PrimaryKey
     public String articleCode;
+
+    public String photoUri;
 }

@@ -1,8 +1,10 @@
 package com.blackwabi.barcodelist.ui.usearticlelist;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
@@ -30,6 +32,7 @@ public class ArticleAdapter extends RemovalListAdapter<Article, ArticleAdapter.A
     protected void bindItemToHolder(ArticleViewHolder holder, CheckedListItem<Article> listitem, boolean removalMode) {
         holder.mArticleName.setText(listitem.getItem().articleName);
         holder.mArticleCode.setText(listitem.getItem().articleCode);
+        holder.mArticleImage.setImageURI(Uri.parse(listitem.getItem().photoUri));
         if (removalMode) {
             holder.mCheckbox.setVisibility(View.VISIBLE);
         } else {
@@ -42,11 +45,13 @@ public class ArticleAdapter extends RemovalListAdapter<Article, ArticleAdapter.A
         private final TextView mArticleName;
         private final TextView mArticleCode;
         private final CheckBox mCheckbox;
+        private final ImageView mArticleImage;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
             mArticleCode = (TextView)itemView.findViewById(R.id.article_code);
             mArticleName = (TextView)itemView.findViewById(R.id.article_name);
+            mArticleImage = (ImageView)itemView.findViewById(R.id.articleImage);
             mCheckbox = (CheckBox)itemView.findViewById(R.id.check_box);
         }
     }
