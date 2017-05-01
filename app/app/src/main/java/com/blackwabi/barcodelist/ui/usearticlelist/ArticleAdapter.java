@@ -2,6 +2,7 @@ package com.blackwabi.barcodelist.ui.usearticlelist;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
@@ -29,16 +30,24 @@ public class ArticleAdapter extends RemovalListAdapter<Article, ArticleAdapter.A
     protected void bindItemToHolder(ArticleViewHolder holder, CheckedListItem<Article> listitem, boolean removalMode) {
         holder.mArticleName.setText(listitem.getItem().articleName);
         holder.mArticleCode.setText(listitem.getItem().articleCode);
+        if (removalMode) {
+            holder.mCheckbox.setVisibility(View.VISIBLE);
+        } else {
+            holder.mCheckbox.setVisibility(View.GONE);
+        }
+        holder.mCheckbox.setChecked(listitem.isChecked());
     }
 
     public class ArticleViewHolder extends RecyclerView.ViewHolder {
         private final TextView mArticleName;
         private final TextView mArticleCode;
+        private final CheckBox mCheckbox;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
             mArticleCode = (TextView)itemView.findViewById(R.id.article_code);
             mArticleName = (TextView)itemView.findViewById(R.id.article_name);
+            mCheckbox = (CheckBox)itemView.findViewById(R.id.check_box);
         }
     }
 }
