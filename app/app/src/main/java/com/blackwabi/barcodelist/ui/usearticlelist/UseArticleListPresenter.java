@@ -1,9 +1,9 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.ui.usearticlelist;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.Article;
-import com.blackwabi.barcodelist.fragments.UseArticleListFragment;
+import com.blackwabi.barcodelist.mvp.presenter.NamedListPresenter;
 
 import java.util.List;
 

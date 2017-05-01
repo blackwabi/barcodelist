@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.ui.createarticle;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.CreateArticlePresenter;
+import com.blackwabi.barcodelist.mvp.fragment.BaseFragment;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 

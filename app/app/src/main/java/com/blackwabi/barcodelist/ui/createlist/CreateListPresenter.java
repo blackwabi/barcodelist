@@ -1,8 +1,8 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.ui.createlist;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
-import com.blackwabi.barcodelist.fragments.CreateListFragment;
+import com.blackwabi.barcodelist.mvp.presenter.BasePresenter;
 
 import javax.inject.Inject;
 

@@ -2,7 +2,8 @@ package com.blackwabi.barcodelist.presenters;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
-import com.blackwabi.barcodelist.fragments.CreateListFragment;
+import com.blackwabi.barcodelist.ui.createlist.CreateListFragment;
+import com.blackwabi.barcodelist.ui.createlist.CreateListPresenter;
 
 import org.junit.Before;
 import org.junit.Test;

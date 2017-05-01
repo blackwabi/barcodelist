@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.ui.createlist;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.CreateListPresenter;
+import com.blackwabi.barcodelist.mvp.fragment.BaseDialogFragment;
 
 /**
  * Created by martinbegleiter on 28/12/16.

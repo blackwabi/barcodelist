@@ -2,7 +2,8 @@ package com.blackwabi.barcodelist.presenters;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
-import com.blackwabi.barcodelist.fragments.CreateArticleFragment;
+import com.blackwabi.barcodelist.ui.createarticle.CreateArticleFragment;
+import com.blackwabi.barcodelist.ui.createarticle.CreateArticlePresenter;
 import com.google.zxing.Result;
 
 import org.junit.Before;

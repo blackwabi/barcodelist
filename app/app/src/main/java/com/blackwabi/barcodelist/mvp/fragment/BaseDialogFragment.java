@@ -1,12 +1,11 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.mvp.fragment;
 
 import android.content.Context;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 
 import com.blackwabi.barcodelist.di.ActivityComponentContainer;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.BasePresenter;
+import com.blackwabi.barcodelist.mvp.presenter.BasePresenter;
 
 import javax.inject.Inject;
 

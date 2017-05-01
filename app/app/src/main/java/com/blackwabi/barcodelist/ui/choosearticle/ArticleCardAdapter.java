@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.ui.choosearticle;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,7 +6,8 @@ import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.Article;
-import com.blackwabi.barcodelist.presenters.CheckedListItem;
+import com.blackwabi.barcodelist.mvp.RemovalListAdapter;
+import com.blackwabi.barcodelist.mvp.CheckedListItem;
 
 /**
  * Created by martinbegleiter on 25/11/16.

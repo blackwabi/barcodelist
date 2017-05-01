@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.mvp;
 
 /**
  * Created by martinbegleiter on 01/04/17.

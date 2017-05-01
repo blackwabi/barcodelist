@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.ui.choosearticle;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,7 +8,7 @@ import android.view.View;
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.ChooseArticlePresenter;
+import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 
 /**
  * Created by martinbegleiter on 23/11/16.

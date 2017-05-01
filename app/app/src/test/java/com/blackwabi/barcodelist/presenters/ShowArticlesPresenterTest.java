@@ -3,7 +3,8 @@ package com.blackwabi.barcodelist.presenters;
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.Article;
-import com.blackwabi.barcodelist.fragments.ShowArticlesFragment;
+import com.blackwabi.barcodelist.ui.showarticles.ShowArticlesFragment;
+import com.blackwabi.barcodelist.ui.showarticles.ShowArticlesPresenter;
 
 import org.junit.Before;
 import org.junit.Test;

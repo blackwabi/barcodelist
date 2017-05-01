@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.blackwabi.barcodelist.fragments.ChooseArticleFragment;
-import com.blackwabi.barcodelist.fragments.CreateListFragment;
-import com.blackwabi.barcodelist.fragments.ShowArticlesFragment;
-import com.blackwabi.barcodelist.fragments.CreateArticleFragment;
-import com.blackwabi.barcodelist.fragments.ShowArticleListsFragment;
-import com.blackwabi.barcodelist.fragments.UseArticleListFragment;
+import com.blackwabi.barcodelist.ui.choosearticle.ChooseArticleFragment;
+import com.blackwabi.barcodelist.ui.createlist.CreateListFragment;
+import com.blackwabi.barcodelist.ui.showarticles.ShowArticlesFragment;
+import com.blackwabi.barcodelist.ui.createarticle.CreateArticleFragment;
+import com.blackwabi.barcodelist.ui.showarticlelists.ShowArticleListsFragment;
+import com.blackwabi.barcodelist.ui.usearticlelist.UseArticleListFragment;
 
 /**
  * Created by martinbegleiter on 04/12/16.

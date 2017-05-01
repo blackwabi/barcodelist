@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.mvp.fragment;
 
 import android.content.Context;
 import android.support.annotation.StringRes;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.blackwabi.barcodelist.di.ActivityComponentContainer;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.BasePresenter;
+import com.blackwabi.barcodelist.mvp.presenter.BasePresenter;
 
 import javax.inject.Inject;
 

@@ -1,11 +1,10 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.ui.showarticlelists;
 
 import com.blackwabi.barcodelist.Navigator;
 import com.blackwabi.barcodelist.data.DataManager;
 import com.blackwabi.barcodelist.data.model.ArticleList;
-import com.blackwabi.barcodelist.fragments.ShowArticleListsFragment;
+import com.blackwabi.barcodelist.mvp.presenter.RemovalListPresenter;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;

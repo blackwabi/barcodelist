@@ -1,6 +1,6 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.mvp.presenter;
 
-import com.blackwabi.barcodelist.fragments.RemovalListFragment;
+import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 
 /**
  * Created by martinbegleiter on 29/11/16.

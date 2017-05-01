@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.mvp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -10,10 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blackwabi.barcodelist.R;
-import com.blackwabi.barcodelist.presenters.CheckedListItem;
-import com.blackwabi.barcodelist.presenters.RemovalListPresenter;
-
-import java.util.List;
+import com.blackwabi.barcodelist.mvp.CheckedListItem;
+import com.blackwabi.barcodelist.mvp.RemovalListAdapter;
+import com.blackwabi.barcodelist.mvp.presenter.RemovalListPresenter;
 
 import static com.blackwabi.barcodelist.R.id.add_fab;
 import static com.blackwabi.barcodelist.R.id.cancel_fab;

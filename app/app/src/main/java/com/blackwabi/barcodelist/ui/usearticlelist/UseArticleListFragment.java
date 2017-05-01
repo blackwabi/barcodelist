@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.ui.usearticlelist;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,7 @@ import android.view.View;
 import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.di.FragmentComponent;
-import com.blackwabi.barcodelist.presenters.UseArticleListPresenter;
+import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 
 /**
  * Created by martinbegleiter on 29/12/16.

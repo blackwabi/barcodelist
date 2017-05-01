@@ -1,6 +1,7 @@
-package com.blackwabi.barcodelist.presenters;
+package com.blackwabi.barcodelist.mvp.presenter;
 
-import com.blackwabi.barcodelist.fragments.RemovalListFragment;
+import com.blackwabi.barcodelist.mvp.CheckedListItem;
+import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 
 import java.util.ArrayList;
 import java.util.List;

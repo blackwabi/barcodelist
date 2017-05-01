@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.fragments;
+package com.blackwabi.barcodelist.mvp;
 
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.blackwabi.barcodelist.presenters.CheckedListItem;
+import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 
 import java.util.List;
 
