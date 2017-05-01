@@ -101,6 +101,7 @@ public abstract class RemovalListFragment<I, A extends RemovalListAdapter<I, ? e
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.onFragmentResume();
         update();
     }
 }

@@ -19,6 +19,7 @@ public abstract class RemovalListPresenter<ITEM, FRAGMENT extends RemovalListFra
         mFragment.setOnItemRemoveClickListener(this);
         fragmentInit();
         mFragment.setShowFabs(shouldShowFabs());
+        populateItemsFromModel();
     }
 
     protected void fragmentInit() {
@@ -34,7 +35,6 @@ public abstract class RemovalListPresenter<ITEM, FRAGMENT extends RemovalListFra
     public abstract List<ITEM> getItems();
 
     public List<CheckedListItem<ITEM>> getCheckedItems() {
-        mItems = createCheckedListFromList(getItems());
         return mItems;
     }
 
@@ -47,6 +47,7 @@ public abstract class RemovalListPresenter<ITEM, FRAGMENT extends RemovalListFra
         List<ITEM> itemsToRemove = getItemsToRemove();
         if (itemsToRemove.size() > 0) {
             removeItems(itemsToRemove);
+            populateItemsFromModel();
         }
         mFragment.update();
         mFragment.showRemoveState(false);
@@ -88,5 +89,15 @@ public abstract class RemovalListPresenter<ITEM, FRAGMENT extends RemovalListFra
     public void onItemClicked(int position, CheckedListItem<ITEM> item) {
         CheckedListItem<ITEM> checkedItem = mItems.get(position);
         checkedItem.setChecked(!checkedItem.isChecked());
+        mFragment.update();
+    }
+
+    public void onFragmentResume() {
+        mFragment.showRemoveState(false);
+        populateItemsFromModel();
+    }
+
+    private void populateItemsFromModel() {
+        mItems = createCheckedListFromList(getItems());
     }
 }
