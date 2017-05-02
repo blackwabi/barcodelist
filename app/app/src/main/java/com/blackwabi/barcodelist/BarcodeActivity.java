@@ -1,6 +1,10 @@
 package com.blackwabi.barcodelist;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,7 +20,10 @@ import com.blackwabi.barcodelist.di.ActivityModule;
 public class BarcodeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ActivityComponentContainer {
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     private ActivityComponent mActivityComponent;
+    private PictureListener mPictureListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +84,36 @@ public class BarcodeActivity extends AppCompatActivity
         return true;
     }
 
-
-
-
-
     private void createAndInjectActivityComponent() {
         mActivityComponent = BarcodeApp.getComponent().activityComponent(new ActivityModule(this));
     }
 
     public ActivityComponent getActivityComponent() {
         return mActivityComponent;
+    }
+
+    public interface PictureListener {
+        void onPictureTaken();
+        void onError();
+    }
+
+    public void takePicture(PictureListener pictureListener, Uri photoURI) {
+        mPictureListener = pictureListener;
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        } else {
+            mPictureListener.onError();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            mPictureListener.onPictureTaken();
+        } else {
+            mPictureListener.onError();
+        }
     }
 }

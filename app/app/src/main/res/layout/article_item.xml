@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:id="@+id/article_image"
+        android:id="@+id/articleImage"
         android:scaleType="centerCrop"
         tools:src="@drawable/babybunny"
         android:src="@drawable/babybunny"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.29"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintLeft_toRightOf="@+id/article_image"
+        app:layout_constraintLeft_toRightOf="@+id/articleImage"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
