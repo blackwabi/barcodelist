@@ -29,6 +29,7 @@ public class CreateArticlePresenter extends BasePresenter<CreateArticleFragment>
     private final Navigator mNavigator;
     private final DataManager mDataManager;
     private String mScannedCode;
+    private Uri mPhotoUri;
 
     @Inject
     BarcodeActivity mActivity;
@@ -40,8 +41,16 @@ public class CreateArticlePresenter extends BasePresenter<CreateArticleFragment>
     }
 
     public void onSaveClicked(String articleName) {
-        mDataManager.addArticle(articleName, mScannedCode);
-        mNavigator.goToArticles();
+        if (validArticle(articleName, mScannedCode, mPhotoUri)) {
+            mDataManager.addArticle(articleName, mScannedCode, mPhotoUri.toString());
+            mNavigator.goToArticles();
+        } else {
+            mFragment.error("You need to specify name, a scanned code and add a picture");
+        }
+    }
+
+    private boolean validArticle(String articleName, String scannedCode, Uri photoUri) {
+        return articleName != null && scannedCode != null && photoUri != null;
     }
 
     public void onScannerClicked() {
@@ -57,20 +66,20 @@ public class CreateArticlePresenter extends BasePresenter<CreateArticleFragment>
 
     public void onAddPhoto() {
         try {
-            final Uri photoUri = generateUri();
+            mPhotoUri = generateUri();
             mActivity.takePicture(new BarcodeActivity.PictureListener() {
                 @Override
                 public void onPictureTaken() {
-                    // TODO: Show success toast
-                    mFragment.setArticleImage(photoUri);
+                    mFragment.setArticleImage(mPhotoUri);
+                    mFragment.info("Added image");
                 }
 
                 @Override
                 public void onError() {
-                    // TODO: Show error message
                     mFragment.setArticleImage(null);
+                    mFragment.error("Error when trying to add image");
                 }
-            }, photoUri);
+            }, mPhotoUri);
         } catch (IOException e) {
             e.printStackTrace();
         }
