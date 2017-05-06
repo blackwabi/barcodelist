@@ -1,7 +1,9 @@
 package com.blackwabi.barcodelist.ui.choosearticle;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.blackwabi.barcodelist.R;
@@ -28,14 +30,17 @@ public class ArticleCardAdapter extends RemovalListAdapter<Article, ArticleCardA
     @Override
     protected void bindItemToHolder(ArticleCardViewHolder holder, CheckedListItem<Article> listitem, boolean removalMode) {
         holder.mArticleName.setText(listitem.getItem().articleName);
+        holder.mArticleImage.setImageURI(Uri.parse(listitem.getItem().photoUri));
     }
 
     public class ArticleCardViewHolder extends RecyclerView.ViewHolder {
         private final TextView mArticleName;
+        private final ImageView mArticleImage;
 
         public ArticleCardViewHolder(View itemView) {
             super(itemView);
             mArticleName = (TextView)itemView.findViewById(R.id.article_name);
+            mArticleImage = (ImageView)itemView.findViewById(R.id.articleImage);
         }
     }
 }
