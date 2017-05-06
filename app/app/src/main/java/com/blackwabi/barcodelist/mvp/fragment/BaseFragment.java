@@ -4,7 +4,10 @@ import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
+import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.di.ActivityComponentContainer;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.mvp.presenter.BasePresenter;
@@ -19,6 +22,22 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment{
 
     private String mTitleString;
     private int mTitleId;
+
+    public void error(String message) {
+        Toast toast = Toast.makeText(mActivity, message, Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        view.setBackgroundColor(getResources().getColor(R.color.errorToastBackground));
+        view.setPadding(50, 20, 20, 50);
+        toast.show();
+    }
+
+    public void info(String message) {
+        Toast toast = Toast.makeText(mActivity, message, Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        view.setBackgroundColor(getResources().getColor(R.color.infoToastBackground));
+        view.setPadding(50, 20, 20, 50);
+        toast.show();
+    }
 
     private enum TitleType {
         RESOURCE,
