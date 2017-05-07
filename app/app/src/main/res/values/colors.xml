@@ -6,5 +6,6 @@
 
     <color name="errorToastBackground">#b71c1c</color>
     <color name="infoToastBackground">#34667e</color>
+    <color name="white">#ffffff</color>
 
 </resources>
