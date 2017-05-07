@@ -10,16 +10,16 @@ import com.blackwabi.barcodelist.R;
 import com.blackwabi.barcodelist.data.model.Article;
 import com.blackwabi.barcodelist.di.FragmentComponent;
 import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
-import com.blackwabi.barcodelist.ui.choosearticle.ArticleCardAdapter;
+import com.blackwabi.barcodelist.ui.choosearticle.ChooseArticleAdapter;
 
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ShowArticlesFragment extends RemovalListFragment<Article, ArticleCardAdapter, ShowArticlesPresenter> {
+public class ShowArticlesFragment extends RemovalListFragment<Article, ShowArticleAdapter, ShowArticlesPresenter> {
 
     @Override
-    protected ArticleCardAdapter createListAdapter() {
-        return new ArticleCardAdapter();
+    protected ShowArticleAdapter createListAdapter() {
+        return new ShowArticleAdapter();
     }
 
     @Override

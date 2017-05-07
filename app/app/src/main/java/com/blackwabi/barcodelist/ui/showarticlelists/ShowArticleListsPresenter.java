@@ -44,6 +44,11 @@ public class ShowArticleListsPresenter extends RemovalListPresenter<ArticleList,
     }
 
     public void onItemClicked(int position, ArticleList articleList) {
+        mNavigator.runList(articleList.listName);
+    }
+
+    public boolean onItemLongClicked(int position, ArticleList articleList) {
         mNavigator.goToList(articleList.listName);
+        return true;
     }
 }

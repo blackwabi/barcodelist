@@ -60,6 +60,10 @@ public abstract class RemovalListFragment<I, A extends RemovalListAdapter<I, ? e
         mListAdapter.setOnItemClickListener(itemClickListener);
     }
 
+    public void setOnItemLongClickListener(ItemLongClickListener<I> itemLongClickListener) {
+        mListAdapter.setOnItemLongClickListener(itemLongClickListener);
+    }
+
     public void setOnItemRemoveClickListener(ItemClickListener<CheckedListItem<I>> itemRemoveClickListener) {
         mListAdapter.setOnItemRemoveClickListener(itemRemoveClickListener);
     }
@@ -96,6 +100,10 @@ public abstract class RemovalListFragment<I, A extends RemovalListAdapter<I, ? e
 
     public interface ItemClickListener<ITEM> {
         void onItemClicked(int position, ITEM item);
+    }
+
+    public interface ItemLongClickListener<ITEM> {
+        boolean onItemLongClicked(int position, ITEM item);
     }
 
     @Override

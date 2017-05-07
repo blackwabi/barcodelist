@@ -1,4 +1,4 @@
-package com.blackwabi.barcodelist.ui.usearticlelist;
+package com.blackwabi.barcodelist.ui.runarticlelist;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,24 +15,22 @@ import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
  * Created by martinbegleiter on 29/12/16.
  */
 
-public class UseArticleListFragment extends RemovalListFragment<Article, ArticleAdapter, UseArticleListPresenter> {
+public class RunArticleListFragment extends RemovalListFragment<Article, RunArticleAdapter, RunArticleListPresenter> {
 
     private static final String ARGS_LIST_NAME = "list_name";
 
     @Override
-    protected ArticleAdapter createListAdapter() {
-        return new ArticleAdapter();
+    protected RunArticleAdapter createListAdapter() {
+        return new RunArticleAdapter();
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_use_article_list;
+        return R.layout.fragment_run_article_list;
     }
 
     @Override
     protected void initCreatedView(View view, Bundle savedInstanceState) {
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.add_fab);
-        fab.setOnClickListener(fabView -> mPresenter.onAddClicked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -46,11 +44,11 @@ public class UseArticleListFragment extends RemovalListFragment<Article, Article
         setTitle(listName);
     }
 
-    public static UseArticleListFragment newInstance(String listName) {
-        UseArticleListFragment useArticleListFragment = new UseArticleListFragment();
+    public static RunArticleListFragment newInstance(String listName) {
+        RunArticleListFragment runArticleListFragment = new RunArticleListFragment();
         Bundle args = new Bundle();
         args.putString(ARGS_LIST_NAME, listName);
-        useArticleListFragment.setArguments(args);
-        return useArticleListFragment;
+        runArticleListFragment.setArguments(args);
+        return runArticleListFragment;
     }
 }

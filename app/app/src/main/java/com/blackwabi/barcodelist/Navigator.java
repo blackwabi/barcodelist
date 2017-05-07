@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.blackwabi.barcodelist.ui.choosearticle.ChooseArticleFragment;
 import com.blackwabi.barcodelist.ui.createlist.CreateListFragment;
+import com.blackwabi.barcodelist.ui.runarticlelist.RunArticleListFragment;
 import com.blackwabi.barcodelist.ui.showarticles.ShowArticlesFragment;
 import com.blackwabi.barcodelist.ui.createarticle.CreateArticleFragment;
 import com.blackwabi.barcodelist.ui.showarticlelists.ShowArticleListsFragment;
@@ -60,5 +61,9 @@ public class Navigator {
 
     private void showDialogFragment(DialogFragment fragment) {
         fragment.show(mActivity.getSupportFragmentManager(), "dialog");
+    }
+
+    public void runList(String listName) {
+        replaceFragment(RunArticleListFragment.newInstance(listName));
     }
 }

@@ -13,13 +13,13 @@ import com.blackwabi.barcodelist.mvp.fragment.RemovalListFragment;
 /**
  * Created by martinbegleiter on 23/11/16.
  */
-public class ChooseArticleFragment extends RemovalListFragment<Article, ArticleCardAdapter, ChooseArticlePresenter> {
+public class ChooseArticleFragment extends RemovalListFragment<Article, ChooseArticleAdapter, ChooseArticlePresenter> {
 
     private static final String ARGS_LIST_NAME = "list_name";
 
     @Override
-    protected ArticleCardAdapter createListAdapter() {
-        return new ArticleCardAdapter();
+    protected ChooseArticleAdapter createListAdapter() {
+        return new ChooseArticleAdapter();
     }
 
     @Override

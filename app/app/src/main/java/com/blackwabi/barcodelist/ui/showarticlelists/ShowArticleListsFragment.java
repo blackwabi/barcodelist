@@ -32,6 +32,7 @@ public class ShowArticleListsFragment extends RemovalListFragment<ArticleList, A
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setOnItemClickListener(((position, articleList) -> mPresenter.onItemClicked(position, articleList)));
+        setOnItemLongClickListener(((position, articleList) -> mPresenter.onItemLongClicked(position, articleList)));
     }
 
     @Override

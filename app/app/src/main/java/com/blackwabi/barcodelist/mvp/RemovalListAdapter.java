@@ -21,6 +21,7 @@ public abstract class RemovalListAdapter<LISTITEM, VIEWHOLDER extends RecyclerVi
     private List<CheckedListItem<LISTITEM>> mItems;
     private RemovalListFragment.ItemClickListener<LISTITEM> mItemClickListener;
     private RemovalListFragment.ItemClickListener<CheckedListItem<LISTITEM>> mItemRemoveClickListener;
+    private RemovalListFragment.ItemLongClickListener<LISTITEM> mItemLongClickListener;
 
     private boolean mRemovalState;
 
@@ -46,6 +47,7 @@ public abstract class RemovalListAdapter<LISTITEM, VIEWHOLDER extends RecyclerVi
         final CheckedListItem<LISTITEM> checkedListItem = mItems.get(position);
         bindItemToHolder(holder, checkedListItem, mRemovalState);
         holder.itemView.setOnClickListener(view -> onItemClicked(position, checkedListItem));
+        holder.itemView.setOnLongClickListener(view -> mItemLongClickListener.onItemLongClicked(position, checkedListItem.getItem()));
     }
 
     private void onItemClicked(int position, CheckedListItem<LISTITEM> item) {
@@ -76,5 +78,9 @@ public abstract class RemovalListAdapter<LISTITEM, VIEWHOLDER extends RecyclerVi
     public void setRemovalState(boolean remove) {
         mRemovalState = remove;
         notifyDataSetChanged();
+    }
+
+    public void setOnItemLongClickListener(RemovalListFragment.ItemLongClickListener<LISTITEM> itemLongClickListener) {
+        mItemLongClickListener = itemLongClickListener;
     }
 }
